@@ -1,298 +1,305 @@
-# Branch Validation Skill
+# Branch Validation for WordPress Block Development
 
-A Claude Code skill for validating branch names against LightSpeed WP's org-wide branching strategy.
+A comprehensive Claude Code skill for validating branch names and providing workflow guidance specifically tailored for WordPress block theme and block plugin development.
 
-## Purpose
+## What This Skill Does
 
-This skill ensures all branches follow the established naming convention and strategy, preventing CI routing failures, PR template mismatches, and automated labeling breakage before they occur.
+✅ **Validates branch names** against WordPress block development conventions  
+✅ **Enforces LightSpeed WP org-wide strategy** for consistent naming across projects  
+✅ **Guides block development workflows** with step-by-step procedures  
+✅ **Provides block-specific testing strategies** (unit, E2E, accessibility, performance)  
+✅ **Coordinates releases** for WordPress blocks, themes, and plugins  
+✅ **Integrates with CI/CD** for automated validation and testing  
 
-## How It Works
+## When to Use This Skill
 
-The skill validates branch names against the pattern **`{type}/{scope}-{title}`** where:
-- **type** is one of 38 approved branch types
-- **scope** describes the area of change
-- **title** is a short description
+### ✅ Use This Skill For
 
-**Example valid branches:**
-- `feat/user-auth-login` — New user login feature
-- `fix/cart-total-calculation` — Fix cart calculation bug
-- `security/csrf-token-validation` — Security CSRF token fix
-- `docs/api-authentication` — API authentication documentation
+- Creating a new WordPress block feature branch
+- Validating a branch name before pushing
+- Understanding block development workflow
+- Planning a block release or version bump
+- Setting up testing for interactive/display/container blocks
+- Coordinating multiple block features
+- Understanding block pattern development
+- Finding block development best practices
 
-## Single Source of Truth
+### 🤖 Use the WordPress Block Branching Agent For
 
-This repository **references and inherits** from the canonical configuration in `.github`:
+- Complex architectural decisions for blocks
+- Release coordination across multiple blocks
+- CI/CD optimization for block validation
+- Troubleshooting non-standard block scenarios
+- Multi-team block development coordination
+- Strategic block versioning decisions
+
+## Quick Start
+
+### Example 1: Validate a Block Branch
 
 ```
-lightspeedwp/.github (canonical)
-├── docs/BRANCHING_STRATEGY.md        ← Master strategy document
-├── .github/branch-types.yml          ← Authoritative branch type definitions
-├── .github/branch-labels.yml         ← Label mapping & area keywords
-├── .github/labels.yml                ← Canonical label definitions
-├── .github/PULL_REQUEST_TEMPLATE/    ← PR templates by type
-└── .github/ISSUE_TEMPLATE/           ← Issue templates
+User: I'm creating a new hero block with parallax. What branch should I name it?
 
-lightspeedwp/branch-validation (this repo)
-├── SKILL.md                          ← Claude Code skill (references .github)
-├── references/                       ← Local reference copies & sync
-│   ├── BRANCHING_STRATEGY.md
-│   ├── branch-types.yml
-│   ├── branch-labels.yml
-│   └── CANONICAL_FILES.md            ← Sync instructions
-└── docs/                             ← Additional documentation
-    └── IMPLEMENTATION.md             ← How to use in your repo
+Skill Response:
+✅ Branch name: feat/block-hero-parallax
+Type: Feature Development
+Pattern: feat/block-{blockname}-{feature}
+
+Requirements:
+- block.json with metadata
+- edit.js editor component  
+- save.js frontend rendering
+- style.scss styling
+- Jest tests (>85% coverage)
+- Playwright E2E tests
+- WCAG 2.2 AAA accessibility compliance
 ```
 
-## Using This Skill in Claude Code
+### Example 2: Release a Block Version
 
-The skill is available globally in Claude Code. It triggers whenever you:
-- Create a new git branch
-- Rename an existing branch
-- Need to verify branch naming compliance
-
-**Usage:**
 ```
-I'm creating a new branch for user authentication
+User: How do I release version 2.0.0 of my block with breaking changes?
+
+Skill Response:
+1. Create branch: release/block-v2-0-0
+2. Update version in block.json, package.json, style.css
+3. Update CHANGELOG.md with breaking changes
+4. Document deprecation path for users
+5. Implement migration for old block versions
+6. Commit and create PR
+7. CI validates version, tests, documentation
+8. Merge and tag: block-v2-0-0
+9. Document upgrade procedure
 ```
-→ The skill validates your proposed branch name before creation
 
-## Branch Type Categories (38 Types)
+## Branch Types for WordPress Block Development
 
-**Feature & Development (6)**
-- `feat`, `proto`, `perf`, `research`, `api`, `seo`
+### Feature Development (6 types)
 
-**Bug Fixes & Reverts (3)**
-- `fix`, `hotfix`, `revert`
+| Type | Pattern | Purpose | Example |
+|------|---------|---------|---------|
+| `feat/block-*` | `feat/block-{name}-{feature}` | New block or feature | `feat/block-hero-parallax` |
+| `feat/block-*-a11y` | `feat/block-{name}-accessibility` | Accessibility improvements | `feat/block-form-a11y-labels` |
+| `perf/block-*` | `perf/block-{name}-{optimization}` | Performance optimization | `perf/block-slider-lazy-load` |
+| `feat/block-patterns-*` | `feat/block-patterns-{category}` | Block pattern library | `feat/block-patterns-landing` |
+| `research/block-*` | `research/block-{topic}` | Block research/spike | `research/block-interactivity` |
+| `refactor/block-*` | `refactor/block-{name}-{change}` | Block refactoring | `refactor/block-tabs-hooks` |
 
-**Release Management (1)**
-- `release` (semantic versioning: `release/v1.2.0`)
+### Bug Fixes & Security (3 types)
 
-**Code Organization (3)**
-- `refactor`, `schema`, `migrate`
+| Type | Pattern | Purpose | Example |
+|------|---------|---------|---------|
+| `fix/block-*` | `fix/block-{name}-{issue}` | Block bug fix | `fix/block-button-contrast` |
+| `security/block-*` | `security/block-{name}-{fix}` | Security fix | `security/block-html-xss` |
+| `a11y/block-*` | `a11y/block-{name}-{issue}` | Accessibility fix | `a11y/block-menu-keyboard` |
 
-**Maintenance & Tasks (3)**
-- `task`, `chore`, `config`
+### Testing & Infrastructure (4 types)
 
-**Documentation (4)**
-- `docs`, `doc`, `i18n`, `content`
+| Type | Pattern | Purpose | Example |
+|------|---------|---------|---------|
+| `test/block-*` | `test/block-{name}-{type}` | Block testing | `test/block-gallery-e2e` |
+| `ci/block-*` | `ci/block-{tool}-{improvement}` | CI/CD for blocks | `ci/block-e2e-setup` |
+| `docs/block-*` | `docs/block-{name}-{section}` | Block documentation | `docs/block-carousel-guide` |
+| Other types | Various | Standard types | `refactor/*, chore/*, task/*` |
 
-**Testing & Quality (3)**
-- `test`, `qa`, `uat`
+### Release & Versioning (2 types)
 
-**CI/CD & Build (4)**
-- `ci`, `build`, `ops`, `telemetry`
+| Type | Pattern | Purpose | Example |
+|------|---------|---------|---------|
+| `release/block-*` | `release/block-v{MAJOR}-{MINOR}-{PATCH}` | Block release | `release/block-v2-0-0` |
+| `hotfix/block-*` | `hotfix/block-{name}-critical` | Critical production fix | `hotfix/block-image-regression` |
 
-**Dependencies (1)**
-- `deps`
+## Directory Structure
 
-**Security (1)**
-- `security` (auto-labeled `priority:critical`)
+```
+branch-validation-wordpress/
+├── SKILL.md                          # Main skill definition
+├── AGENTS.md                         # Agent definitions & when to use
+├── README.md                         # This file
+│
+├── docs/                             # Documentation
+│   ├── BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md    # Block branching guide
+│   ├── WORDPRESS_BLOCK_THEME_GUIDE.md            # Theme development
+│   ├── WORDPRESS_BLOCK_PLUGIN_GUIDE.md           # Plugin development
+│   └── (24+ files from lightspeedwp/.github)
+│
+├── prompts/                          # LLM prompts
+│   └── validate-wordpress-block-branch.md        # Validation prompt
+│
+├── references/                       # Reference materials
+│   ├── LIGHTSPEED_INTEGRATION.md     # Canonical strategy bridge
+│   └── block-development-instructions.md
+│
+└── tests/ & __tests__/               # Test suites (from original skill)
+```
 
-**Design & UX (4)**
-- `design`, `ds`, `ux`, `a11y`
+## Key Concepts
 
-**Audit & Compliance (1)**
-- `audit`
+### Block Types
 
-**AI & Automation (3)**
-- `codex`, `aiops`, `automation`
+**Interactive Blocks**
+- User interaction required (carousel, form, accordion)
+- Requires: Unit + E2E + A11y + Visual tests
+- Example: `feat/block-carousel-swipe-nav`
 
-**Epics (1)**
-- `epic`
+**Display Blocks**
+- Content display only (hero banner, testimonial)
+- Requires: Visual + A11y tests
+- Example: `feat/block-hero-parallax`
 
-## Naming Rules
+**Container Blocks**
+- Hold other blocks (columns, tabs, group)
+- Requires: E2E (nesting) + A11y tests
+- Example: `feat/block-accordion-container`
 
-✅ **Do:**
-- Use lowercase letters, numbers, and hyphens
-- Separate words with hyphens
-- Use 2-4 descriptive words in present tense
-- Examples: `feat/user-auth-flow`, `fix/mobile-nav-spacing`
+### Testing Requirements
 
-❌ **Don't:**
-- Use uppercase letters: `Feat/UserAuth`
-- Use underscores: `feat/user_auth`
-- Use spaces or special characters: `feat/user auth`
-- Use single-word scopes: `feat/auth` (add more detail)
-- Use forbidden prefixes: `claude/`, `copilot/`, `openai/`
+| Block Type | Unit | E2E | A11y | Visual |
+|-----------|------|-----|------|--------|
+| Interactive | ✅ | ✅ | ✅ | ✅ |
+| Display | ✅ | — | ✅ | ✅ |
+| Container | ✅ | ✅ | ✅ | ✅ |
+| Pattern | — | — | ✅ | ✅ |
 
-## Exemptions
+## Example Workflows
 
-These branches are always allowed, even if they don't match the pattern:
-
-- `dependabot/*` — Automated dependency updates
-- `renovate/*` — Automated dependency updates
-
-## Canonical Files & Sync
-
-This repository maintains reference copies of canonical files from [lightspeedwp/.github](https://github.com/lightspeedwp/.github):
-
-### Current References
-
-- **BRANCHING_STRATEGY.md** — Master strategy document (source of truth)
-- **branch-types.yml** — All 38 types and their properties
-- **branch-labels.yml** — Type-to-label mapping and area keywords
-
-### Syncing Updates
-
-To pull the latest canonical files:
+### Creating a New Block
 
 ```bash
-cd branch-validation
-./scripts/sync-canonical.sh
+1. Create branch: git checkout -b feat/block-hero-parallax
+2. Create block structure: mkdir -p src/blocks/hero
+3. Implement: block.json, edit.js, save.js, style.scss
+4. Write tests: Jest unit, Playwright E2E, accessibility
+5. Commit: git commit -m "feat(block-hero): add parallax effect..."
+6. Push: git push -u origin feat/block-hero-parallax
+7. PR auto-labels: type:feature, area:blocks, priority:high
+8. CI validates: WPCS, Jest, E2E, a11y, bundle size
+9. Merge via squash merge
+10. Block ready for use
 ```
 
-This updates the `references/` directory. Review changes and commit:
+### Fixing a Block Bug
 
 ```bash
-git add references/
-git commit -m "chore: sync canonical files from .github"
-git push
+1. Create branch: git checkout -b fix/block-button-contrast
+2. Fix issue: Update button styles, add tests
+3. Commit: git commit -m "fix(block-button): improve color contrast..."
+4. Push and create PR
+5. CI validates: All tests pass, no regressions
+6. Merge when approved
 ```
 
-### Configuration Files
-
-The skill reads canonical configuration from `.github`:
-
-#### `.github/branch-types.yml`
-
-Defines all 38 branch types and their properties:
-
-```yaml
-feat:
-  template: pr_feature.md
-  labels:
-    - type:feature
-  examples:
-    - feat/user-registration-flow
-    - feat/dark-mode-support
-
-security:
-  template: pr_security.md
-  labels:
-    - type:security
-    - priority:critical
-  examples:
-    - security/csrf-token-validation
-```
-
-#### `.github/branch-labels.yml`
-
-Maps branch types to labels and area keywords:
-
-```yaml
-feat:
-  default_labels:
-    - type:feature
-  area_keywords:
-    - api
-    - ui
-    - component
-    - backend
-    - frontend
-
-security:
-  default_labels:
-    - type:security
-    - priority:critical
-  area_keywords:
-    - security
-    - auth
-    - vulnerability
-    - xss
-    - csrf
-```
-
-### Area Keywords
-
-Area keywords automatically trigger area label detection:
-
-- `api` → `area:integration`
-- `auth` / `security` → `area:security`
-- `database` / `db` → `area:infrastructure`
-- `frontend` / `ui` / `component` → `area:scripts`
-- `backend` / `server` / `middleware` → `area:core`
-- `test` / `e2e` / `spec` → `area:testing`
-- `ci` / `workflow` → `area:ci`
-- `perf` / `performance` → `area:performance`
-
-## Release & Hotfix Flow
-
-### Release Branches
+### Releasing a Block
 
 ```bash
-git checkout -b release/v1.2.0
-# Update version numbers
-# Update CHANGELOG.md
-# Push, open PR, review, merge
-git tag v1.2.0
-git push origin v1.2.0
+1. Create branch: git checkout -b release/block-v1-2-0
+2. Update versions: block.json, package.json, style.css
+3. Update CHANGELOG.md
+4. Commit: git commit -m "release(block): version 1.2.0"
+5. PR created, all CI passes
+6. Merge to main, create tag
+7. Back-merge to develop
+8. Block deployed to WordPress.org (if plugin)
 ```
 
-### Hotfix Branches
+## Documentation Map
 
-```bash
-git checkout main
-git checkout -b hotfix/csrf-validation
-# Make minimal fix
-# Push, open PR to main, merge
-git tag v1.2.1
-git push origin v1.2.1
-# Back-merge to develop if used
+| Need | Read | Purpose |
+|------|------|---------|
+| Block naming | [SKILL.md](SKILL.md) | Quick reference |
+| Block workflow | [BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md](docs/BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md) | Step-by-step guide |
+| Theme blocks | [WORDPRESS_BLOCK_THEME_GUIDE.md](docs/WORDPRESS_BLOCK_THEME_GUIDE.md) | Theme development |
+| Plugin blocks | [WORDPRESS_BLOCK_PLUGIN_GUIDE.md](docs/WORDPRESS_BLOCK_PLUGIN_GUIDE.md) | Plugin development |
+| Canonical strategy | [LIGHTSPEED_INTEGRATION.md](references/LIGHTSPEED_INTEGRATION.md) | Org-wide rules |
+| Agents | [AGENTS.md](AGENTS.md) | When to use agent |
+
+## Integration with LightSpeed WP
+
+This skill integrates the canonical LightSpeed WP branching strategy with WordPress block-specific conventions:
+
+- ✅ Follows org-wide `{type}/{scope}-{title}` pattern
+- ✅ Uses approved type list (30+ types)
+- ✅ Respects forbidden prefixes (claude/, copilot/, openai/)
+- ✅ Enforces WordPress block naming: `feat/block-{name}-{feature}`
+- ✅ Supports org-wide CI/CD validation
+- ✅ Compatible with PR template routing
+- ✅ Auto-labels branches by type and area
+- ✅ Routes to WordPress branching agent for complex decisions
+
+See [LIGHTSPEED_INTEGRATION.md](references/LIGHTSPEED_INTEGRATION.md) for complete mapping.
+
+## Troubleshooting
+
+### Branch Name Not Valid
+
+```
+Error: "feat/button-block-color-fix"
+Issue: Missing "block-" prefix
+
+Fix: "feat/block-button-color-fix"
+Pattern: feat/block-{blockname}-{feature}
 ```
 
-## Common Errors & Fixes
+### Type Not Recognized
 
-### ❌ Uppercase Letters
-`Feat/UserAuth` → ✅ `feat/user-auth`
+```
+Error: "feature/block-hero-parallax"
+Issue: "feature" not an approved type
 
-### ❌ Underscores
-`feat/user_auth_login` → ✅ `feat/user-auth-login`
-
-### ❌ Invalid Type
-`feature/login` → ✅ `feat/user-login`
-
-### ❌ Missing Scope
-`feat/login` → ✅ `feat/user-auth-login`
-
-### ❌ Forbidden Prefix
-`claude/test-feature` → ✅ `feat/test-feature`
-
-## Renaming a Branch
-
-If you've already pushed a branch with an incorrect name:
-
-```bash
-# Rename locally
-git branch -m old-name new-name
-
-# Rename on remote
-git push origin :old-name new-name
-git push -u origin new-name
-
-# Update any PRs (may need to close/reopen)
+Fix: "feat/block-hero-parallax"
+Approved types: feat, fix, a11y, perf, test, ci, docs, release, hotfix, security, etc.
 ```
 
-## For Repository Maintainers
+### CI Tests Failing
 
-Repositories using this branching strategy should reference the canonical files directly. See `docs/IMPLEMENTATION.md` for integration patterns:
+Check:
+- [ ] Jest tests passing with >85% coverage
+- [ ] Playwright E2E tests included
+- [ ] Accessibility audit passed (axe-core)
+- [ ] WordPress Coding Standards clean
+- [ ] No console errors
+- [ ] CHANGELOG.md updated
 
-- Git hook setup (Lefthook)
-- CI/CD validation workflows
-- PR template routing
-- Auto-labeling configuration
+## Support & Resources
 
-## References
+**For simple questions:**
+- Use this skill directly
+- Check the documentation
+- Review example workflows
 
-**Official Canonical Files:**
-- [Branching Strategy](https://github.com/lightspeedwp/.github/blob/develop/docs/BRANCHING_STRATEGY.md)
-- [Branch Types](https://github.com/lightspeedwp/.github/blob/develop/.github/branch-types.yml)
-- [Branch Labels](https://github.com/lightspeedwp/.github/blob/develop/.github/branch-labels.yml)
-- [Labels Canonical](https://github.com/lightspeedwp/.github/blob/develop/.github/labels.yml)
-- [PR Templates](https://github.com/lightspeedwp/.github/tree/develop/.github/PULL_REQUEST_TEMPLATE)
-- [Issue Templates](https://github.com/lightspeedwp/.github/tree/develop/.github/ISSUE_TEMPLATE)
+**For complex decisions:**
+- Invoke the WordPress Block Branching Agent
+- Needed for release coordination, CI/CD setup, architectural decisions
 
-## Questions?
+**External Resources:**
+- [WordPress Block Editor Handbook](https://developer.wordpress.org/block-editor/)
+- [LightSpeed WP .github Repository](https://github.com/lightspeedwp/.github)
+- [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
+- [WCAG 2.2 Accessibility Standards](https://www.w3.org/WAI/WCAG22/quickref/)
 
-- Check [BRANCHING_STRATEGY.md](https://github.com/lightspeedwp/.github/blob/develop/docs/BRANCHING_STRATEGY.md) for detailed rules
-- Review `CONTRIBUTING.md` in your repository for repo-specific guidelines
-- Reference `.github/branch-types.yml` for the complete type list
+## Features at a Glance
+
+- ✅ Block-specific branch name validation
+- ✅ Step-by-step development workflows
+- ✅ Testing strategy guidance per block type
+- ✅ Release and version management
+- ✅ Accessibility compliance (WCAG 2.2 AAA)
+- ✅ Performance optimization guidance
+- ✅ CI/CD integration examples
+- ✅ GitHub Actions workflow templates
+- ✅ Commits message format guide
+- ✅ Theme and plugin development guides
+- ✅ Pattern library best practices
+- ✅ Multi-block coordination support
+- ✅ LightSpeed WP canonical strategy integration
+- ✅ WordPress standards compliance
+
+## Version
+
+**Current Version:** 1.0.0  
+**Last Updated:** 2026-10-30  
+**Compatibility:** WordPress 5.0+, Gutenberg, wp-scripts, Node.js 16+
+
+---
+
+**Need help?** Refer to the appropriate documentation or invoke the WordPress Block Branching Agent for complex scenarios.

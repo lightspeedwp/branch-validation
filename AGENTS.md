@@ -1,166 +1,183 @@
-# Agents Guide
+# Agent Definitions for WordPress Block Development
 
-Claude agents that work with the branch-validation skill and repository.
+This document defines agent roles that work with the `branch-validation-wordpress` skill ecosystem.
 
-## Branch Validation Agent
+## WordPress Block Branching Agent
 
-**Role:** `branch-validation`  
-**Location:** `~/.claude/agents/branch-validation.agent.md`
+**Location:** `~/.claude/agents/wordpress-block-branching.md`
 
-### Purpose
+**Purpose:** Autonomous agent for WordPress block development workflows, providing expert guidance on branch strategy, naming conventions, and CI/CD integration specific to block themes and plugins.
 
-Validates branch names against LightSpeed WP's org-wide branching strategy and guides developers through the naming process.
+**When to Use This Agent:**
 
-### Capabilities
+- **Complex branching scenarios:** Block architecture decisions, multi-block features, or coordinated releases
+- **Release planning:** Planning block version bumps, managing deprecations, coordinating plugin/theme versions
+- **Multi-team coordination:** Coordinating block development across multiple developers or teams
+- **CI/CD optimization:** Setting up block-specific testing, performance monitoring, or deployment
+- **Refactoring at scale:** Planning large refactors affecting multiple blocks or block patterns
+- **Troubleshooting:** Diagnosing branch strategy issues, merge conflicts, or release problems
 
-- ✅ Branch name validation against pattern `{type}/{scope}-{title}`
-- ✅ Branch type recommendation and selection
-- ✅ Label routing and PR template selection explanation
-- ✅ CI/CD integration guidance (GitHub Actions, Lefthook, NPM scripts)
-- ✅ Naming error detection and correction
-- ✅ Branching strategy education and best practices
+**What the Agent Does:**
 
-### When to Use
+- Validates block branch names against WordPress block naming conventions
+- Provides step-by-step guidance for block development workflows
+- Coordinates multi-block features and dependencies
+- Manages release cycles and version bumping for blocks
+- Advises on testing strategy (unit/E2E/a11y/performance)
+- Helps troubleshoot block-specific issues
+- Integrates with CI/CD for block automation
 
-Invoke when:
-- Validating a branch name before creation
-- Selecting the right type for a change
-- Setting up branch validation in CI/CD
-- Troubleshooting validation failures
-- Understanding label routing or template selection
-- Integrating the strategy in a new repository
+**Agent Capabilities:**
 
-### Example Invocations
+- Analyze block project structure
+- Generate branch naming suggestions for blocks
+- Plan release coordination for multiple blocks
+- Design testing strategies for interactive/display/container blocks
+- Recommend performance optimization approaches
+- Guide accessibility compliance (WCAG 2.2 AAA)
+- Coordinate with theme/plugin development workflows
 
+## When to Use Skill vs Agent
+
+### Use the **branch-validation-wordpress Skill** when:
+
+- Quick validation of a single branch name
+- Simple lookup of branch naming conventions
+- Understanding which branch type to use
+- Reference information on release process
+- Documentation/training needs
+- Standard one-off questions about branching
+
+### Use the **WordPress Block Branching Agent** when:
+
+- Making architectural decisions for block features
+- Planning complex, multi-step block development
+- Coordinating releases across multiple blocks
+- Troubleshooting non-standard scenarios
+- Optimizing CI/CD for block development
+- Need ongoing guidance through a multi-step process
+- Dealing with version coordination complexity
+
+## Agent Integration Example
+
+### Scenario: Release Coordination for Multiple Blocks
+
+**User Request:**
+> "I have 3 blocks (hero, testimonial, pricing-table) in my plugin. Each has breaking changes. How should I manage the release?"
+
+**When to invoke the agent:**
 ```
-"Is this branch name valid? feat/user-auth-login"
-"I'm creating a branch for a security fix, what type should I use?"
-"How do I set up branch validation in GitHub Actions?"
-"What labels will this branch get? security/csrf-token-validation"
-```
-
-### Knowledge
-
-The agent knows:
-- All 38 approved branch types
-- Naming rules and validation patterns
-- Label routing and auto-application
-- PR template selection
-- CI/CD integration patterns
-- Common naming errors and fixes
-
-### Limitations
-
-The agent:
-- ❌ Does NOT merge branches or modify git history
-- ❌ Does NOT override validation rules
-- ❌ Does NOT commit code
-- ❌ Does NOT delete or force-push branches
-- ❌ Does NOT make policy decisions (escalates to team leads)
-
-## How Agents Integrate with Skills
-
-### Skill vs Agent
-
-**Skill (`branch-validation`)**
-- Auto-triggers in Claude Code when creating/renaming branches
-- Integrated into the chat flow
-- Available globally across projects
-
-**Agent (`branch-validation` role)**
-- Invoked explicitly when you need detailed guidance
-- Provides educational context and integration help
-- Works across projects and contexts
-
-### Example Workflow
-
-1. **User wants to create a branch**
-   ```
-   "I'm implementing user authentication"
-   ```
-
-2. **Skill provides quick validation**
-   - Suggests: `feat/user-auth-login`
-   - Shows it's valid
-   - Branch created
-
-3. **User wants to understand the strategy better**
-   ```
-   "Tell me more about branch validation"
-   ```
-
-4. **Agent provides comprehensive guidance**
-   - Explains all 38 types
-   - Shows label routing
-   - Provides CI/CD setup examples
-
-## Configuration & Maintenance
-
-### Keeping Agents in Sync
-
-The agent reads from:
-- `references/branch-types.yml` — Type definitions
-- `references/branch-labels.yml` — Label mapping
-- `docs/IMPLEMENTATION.md` — Integration patterns
-
-When canonical files change:
-1. Run `./scripts/sync-canonical.sh`
-2. Update agent role if needed (rare)
-3. Commit changes
-
-### Adding New Types
-
-If a new branch type is approved:
-
-1. Add to `.github/branch-types.yml` in lightspeedwp/.github
-2. Run sync: `./scripts/sync-canonical.sh`
-3. Update `SKILL.md` in this repo
-4. Update agent role if documentation needed
-5. Commit and push
-
-## Agent Role Definition
-
-The full agent role is defined in `branch-validation.agent.md`:
-
-```yaml
----
-name: Branch Validation Agent
-role: branch-validation
-description: Validates branch names against LightSpeed WP's org-wide branching strategy
-capabilities:
-  - branch-name-validation
-  - type-selection
-  - naming-pattern-guidance
-  - ci-integration-advice
-  - error-correction
-model: claude-opus-5-5
----
+Use the WordPress Block Branching Agent to:
+1. Understand the breaking changes in each block
+2. Plan version bumping (major version for plugin + each block)
+3. Coordinate CHANGELOG entries
+4. Design migration paths for existing users
+5. Plan CI/CD validation for all blocks
+6. Create release branch strategy
+7. Document upgrade procedure
 ```
 
-## Related Skills
+**The agent would:**
+- Ask clarifying questions about each block's changes
+- Recommend semantic versioning strategy
+- Suggest deprecation warnings for old blocks
+- Plan testing to ensure blocks still work together
+- Generate release branch names and workflow
+- Create a step-by-step release checklist
 
-This agent works alongside:
-- **branch-validation skill** — Auto-validation during branch operations
-- **labeling skill** — Label management and issue automation
-- **pr-creation skill** — PR template routing and automation
+### Scenario: Setting Up Block-Specific CI/CD
 
-## Documentation
+**User Request:**
+> "How do I set up GitHub Actions to test all blocks in my WordPress theme?"
 
-For more information, see:
-- [README.md](./README.md) — Project overview
-- [SKILL.md](./SKILL.md) — Skill documentation
-- [docs/IMPLEMENTATION.md](./docs/IMPLEMENTATION.md) — CI/CD integration
-- [docs/CANONICAL_STRUCTURE.md](./docs/CANONICAL_STRUCTURE.md) — File structure
-- [CONTRIBUTING.md](#) — Repo-specific guidelines (per-repository)
+**When to invoke the agent:**
+```
+Use the WordPress Block Branching Agent to:
+1. Design testing strategy per block type
+2. Plan CI/CD pipeline stages
+3. Create performance budgets for blocks
+4. Set up accessibility testing automation
+5. Configure bundle size monitoring
+6. Create deployment triggers
+7. Plan rollback procedures
+```
 
-## Support
+**The agent would:**
+- Recommend test tools (Jest, Playwright, axe-core)
+- Design GitHub Actions workflows
+- Create performance thresholds
+- Plan manual validation gates
+- Set up notifications/alerts
+- Generate workflow YAML
 
-For questions about agents:
-- Check the agent role file: `~/.claude/agents/branch-validation.agent.md`
-- See the BRANCHING_STRATEGY.md in lightspeedwp/.github
-- Review docs/ folder for implementation patterns
+## Related Agent Documentation
 
-For policy questions:
-- Consult BRANCHING_STRATEGY.md (source of truth)
-- Check with your team lead
-- Review CONTRIBUTING.md in your repository
+For WordPress development beyond block validation, see:
+
+- **WordPress Block Theme Development Agent** (if created) — Theme-specific guidance
+- **WordPress Plugin Development Agent** (if created) — Plugin-specific guidance
+- **WordPress CI/CD Agent** (if created) — GitHub Actions and deployment
+
+## Communication with Agents
+
+When invoking the WordPress Block Branching Agent:
+
+1. **Provide context:**
+   - What you're building (theme blocks, plugin blocks, mixed)
+   - Number of blocks/contributors
+   - Release timeline
+   - Known constraints
+
+2. **Be specific about the decision:**
+   - What decision are you trying to make?
+   - What's blocking you?
+   - What have you already tried?
+
+3. **Follow the agent's guidance:**
+   - The agent will ask clarifying questions
+   - Answer thoroughly for better recommendations
+   - Implement step-by-step guidance
+   - Return for follow-up if blocked
+
+## Example Agent Invocation
+
+```
+Claude, invoke the WordPress Block Branching Agent for this:
+
+I'm building a block plugin with 5 custom blocks. We have 2 developers working 
+on different blocks simultaneously. I need help setting up a branching strategy 
+that:
+- Prevents conflicts between developers
+- Allows independent block testing
+- Supports staged releases (can ship individual blocks)
+- Tracks which blocks are stable vs experimental
+
+Current team size: 2 developers
+Target launch: 4 weeks
+Deployment: WordPress.org plugin repository
+```
+
+The agent would return with a complete branching strategy tailored to your needs.
+
+## Agent vs Skill Decision Matrix
+
+| Scenario | Skill | Agent | Reason |
+|----------|-------|-------|--------|
+| "What's the pattern for a button block fix?" | ✅ | | Simple lookup |
+| "How do I name this branch?" | ✅ | | Single validation |
+| "I'm planning a major refactor across 10 blocks" | | ✅ | Complex coordination |
+| "Release planning for plugin v2.0" | | ✅ | Multi-step planning |
+| "What branch types exist?" | ✅ | | Reference information |
+| "Should these blocks be 1 or 3 releases?" | | ✅ | Strategic decision |
+| "How do I organize block patterns?" | ✅ | | Standard guidance |
+| "Our CI/CD is failing on all blocks" | | ✅ | Troubleshooting needed |
+| "What's a container block?" | ✅ | | Definition/documentation |
+| "Design our testing strategy for blocks" | | ✅ | Complex planning |
+
+## Resources
+
+- [WordPress Block Editor Handbook](https://developer.wordpress.org/block-editor/)
+- [Branch Validation Main Skill](SKILL.md)
+- [WordPress Block Branching Strategy](docs/BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md)
+- [Block Theme Development Guide](docs/WORDPRESS_BLOCK_THEME_GUIDE.md)
+- [Block Plugin Development Guide](docs/WORDPRESS_BLOCK_PLUGIN_GUIDE.md)
