@@ -56,10 +56,11 @@ prepare-commit-msg:
       run: |
         BRANCH=$(git rev-parse --abbrev-ref HEAD)
         if [[ "$BRANCH" =~ ^(feat|fix|hotfix|release|refactor|test|ci|docs|a11y|perf|security)/ ]]; then
-          BRANCH_NAME=$(echo $BRANCH | sed 's/[^-]*-//g' | sed 's/-/ /g')
-          if ! grep -q "$BRANCH_NAME" "$1"; then
+          BRANCH_NAME=$(echo "$BRANCH" | sed 's/[^-]*-//g' | sed 's/-/ /g')
+          if ! grep -qF -- "$BRANCH_NAME" "$1"; then
             sed -i.bak '1s/^/\n/' "$1"
-            sed -i.bak "1s/^/$BRANCH_NAME\n/" "$1"
+            BRANCH_NAME_SAFE=$(printf '%s\n' "$BRANCH_NAME" | sed -e 's/[\/&]/\\&/g')
+            sed -i.bak "1s/^/$BRANCH_NAME_SAFE/" "$1"
             rm -f "$1.bak"
           fi
         fi
