@@ -1,7 +1,7 @@
 ---
 name: branch-validation-wordpress
-description: Validates branch names and provides strategy guidance for WordPress block themes and block plugins. Use this whenever developing or reviewing WordPress block projects (themes or plugins) to ensure branch naming follows the org-wide strategy, determine correct branch types for block feature work, validate testing strategies, and understand version management. Triggers on any WordPress block development workflow — creation of features, bug fixes, releases, or strategic questions about branch management.
-compatibility: git, Node.js (for validation scripts), WordPress 5.0+, block development tools
+description: Branch naming, testing strategy, and release guidance for WordPress block development. Use this to validate branch names for block themes or plugins, determine which branch type to use (feat, fix, perf, a11y, test, release, hotfix), understand testing requirements by block type, plan releases, coordinate multi-block updates, or onboard teams to the branching strategy. Make sure to use this skill whenever a developer asks about WordPress block branching, names a new branch for a block, needs release coordination guidance, or wants to understand block testing/versioning patterns.
+compatibility: git, Node.js (for validation scripts), WordPress 5.0+
 ---
 
 # Branch Validation for WordPress Block Development
@@ -321,58 +321,52 @@ Branches automatically trigger:
 5. Merge to `main`, tag as `block-v{patch}`
 6. Back-merge to `develop`
 
-## Resources
+## Quick Reference: Branch Naming Checklist
 
-- **Full Strategy:** See `docs/BRANCHING_STRATEGY.md`
-- **WordPress Blocks:** See `docs/WORDPRESS_BLOCK_THEME_GUIDE.md`
-- **Block Plugins:** See `docs/WORDPRESS_BLOCK_PLUGIN_GUIDE.md`
-- **Testing:** See `docs/BRANCH_TYPE_PRIORITY_MAPPING.md`
-- **Troubleshooting:** See `docs/BRANCH_VALIDATION_TROUBLESHOOTING.md`
-- **Automation:** See `docs/AUTOMATION_GOVERNANCE.md`
+✅ Use lowercase letters and hyphens only  
+✅ Start with a valid type: `feat`, `fix`, `perf`, `a11y`, `security`, `test`, `ci`, `refactor`, `docs`, `release`, `hotfix`  
+✅ Include `block-` prefix for all block-related work  
+✅ Follow format: `{type}/block-{component}-{description}`  
+✅ Validate before pushing: `node scripts/validate-branch-name.js your-branch-name`
 
-## Validation
-
-Validate your branch name:
-
-```bash
-node scripts/validate-branch-name.js feat/block-hero-parallax
-# ✅ Valid branch: feat/block-hero-parallax
-```
-
-## Common Patterns
+## Common Workflows
 
 ### Adding a New Block
 
 ```
 1. Create: git checkout -b feat/block-{name}-{feature}
-2. Develop: Add block code + tests
+2. Develop: Add block code + tests (Jest 85%+ coverage, Playwright E2E, WCAG 2.2 AAA)
 3. Commit: feat(block-{name}): add {feature}
 4. Push: git push -u origin feat/block-{name}-{feature}
-5. PR: Triggers full CI suite, accessibility audit
+5. PR: Automatically labeled, runs full CI suite and accessibility audit
 ```
 
-### Block Bug Fix
+### Fixing a Block Bug
 
 ```
 1. Create: git checkout -b fix/block-{name}-{issue}
-2. Fix: Minimal, focused change
-3. Test: Ensure regression tests added
-4. Commit: fix(block-{name}): {issue}
+2. Fix: Make minimal, focused change only
+3. Test: Add regression tests
+4. Commit: fix(block-{name}): {description}
 5. PR: Auto-labeled type:bug, area:blocks
 ```
 
-### Block Release
+### Releasing a Block
 
 ```
-1. Create: git checkout -b release/block-v1-2-0
-2. Prepare: Update version, changelog
-3. Test: Full CI suite runs
-4. Merge: Squash to main with tag
-5. Deploy: Automatic to WordPress.org
+1. Create: git checkout -b release/block-v{major}-{minor}-{patch}
+2. Prepare: Update version in block.json, package.json, and CHANGELOG.md
+3. Test: Full CI suite runs automatically
+4. Merge: Squash to main, create tag block-v{version}
+5. Deploy: Automatic to WordPress.org (if plugin) or theme directory
 ```
 
-## Agent Support
+## Documentation
 
-For complex branch strategy questions, use the **WordPress Block Branching Agent**.
+**For full details on:**
+- Block theme development → Load `branch-validation-wordpress-themes` sub-skill
+- Block plugin development → Load `branch-validation-wordpress-plugins` sub-skill
+- Testing strategies (Jest, Playwright, accessibility) → Load `branch-validation-wordpress-testing` sub-skill
+- Release management and versioning → Load `branch-validation-wordpress-release` sub-skill
 
-See `AGENTS.md` for the full agent definition and when to use it.
+See the main skill repository for complete guides: https://github.com/lightspeedwp/branch-validation
