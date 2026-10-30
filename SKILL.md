@@ -246,14 +246,25 @@ Blocks should specify minimum WordPress version:
 
 ```
 feat/block-hero-parallax-scroll
+feat/block-header-responsive-layout
+feat/block-navigation-submenu-support
 feat/block-testimonial-carousel
+feat/block-form-multi-step-validation
 fix/block-button-color-wcag
+fix/block-navigation-mobile-menu-toggle
 perf/block-gallery-lazy-loading
+perf/block-header-render-optimization
 a11y/block-form-keyboard-nav
+a11y/block-navigation-keyboard-navigation
+a11y/block-header-color-contrast
 test/block-slider-e2e-carousel
+test/block-navigation-accessibility-audit
+test/block-header-responsive-testing
 docs/block-api-migration-guide
+docs/block-header-usage-guide
 release/block-v2-0-0
 hotfix/block-image-responsive-regression
+hotfix/block-navigation-mobile-critical
 feat/block-patterns-landing-pages
 ```
 
@@ -366,6 +377,9 @@ Branches automatically trigger:
 **For full details on:**
 - Block theme development → Load `branch-validation-wordpress-themes` sub-skill
 - Block plugin development → Load `branch-validation-wordpress-plugins` sub-skill
+- Block architecture & component design → Load `branch-validation-wordpress-architecture` sub-skill
+- Security hardening & vulnerability prevention → Load `branch-validation-wordpress-security` sub-skill
+- Accessibility (WCAG 2.2 AAA) & inclusive design → Load `branch-validation-wordpress-accessibility` sub-skill
 - Testing strategies (Jest, Playwright, accessibility) → Load `branch-validation-wordpress-testing` sub-skill
 - Release management and versioning → Load `branch-validation-wordpress-release` sub-skill
 
