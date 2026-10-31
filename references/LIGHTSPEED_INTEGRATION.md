@@ -422,17 +422,29 @@ git commit -m "release(block): version 2.0.0
 
 ## Resources
 
-**Canonical Strategy:**
+**Canonical Strategy (LightSpeed Org-Wide):**
 - [LightSpeed WP .github Repository](https://github.com/lightspeedwp/.github)
-- [BRANCHING_STRATEGY.md](https://github.com/lightspeedwp/.github/blob/develop/docs/BRANCHING_STRATEGY.md)
+- [BRANCHING_STRATEGY.md](https://github.com/lightspeedwp/.github/blob/develop/docs/BRANCHING_STRATEGY.md) — Org-wide branching standards
 - [Branch Validation Troubleshooting](https://github.com/lightspeedwp/.github/blob/develop/docs/BRANCH_VALIDATION_TROUBLESHOOTING.md)
+
+**Canonical Configuration Files:**
+- [branch-types.yml](https://github.com/lightspeedwp/.github/blob/develop/.github/branch-types.yml) — Approved branch types
+- [branch-labels.yml](https://github.com/lightspeedwp/.github/blob/develop/.github/branch-labels.yml) — Automated label routing
+- [labels.yml](https://github.com/lightspeedwp/.github/blob/develop/.github/labels.yml) — Label definitions
+- [changelog-rules.yml](https://github.com/lightspeedwp/.github/blob/develop/.github/changelog-rules.yml) — Changelog entry rules
+- [issue-types.yml](https://github.com/lightspeedwp/.github/blob/develop/.github/issue-types.yml) — Issue type definitions
+- [labeler.yml](https://github.com/lightspeedwp/.github/blob/develop/.github/labeler.yml) — PR labeling automation
+
+**Canonical Templates:**
+- [Issue Templates](https://github.com/lightspeedwp/.github/tree/develop/.github/ISSUE_TEMPLATE) — Issue creation templates
+- [Pull Request Templates](https://github.com/lightspeedwp/.github/tree/develop/.github/PULL_REQUEST_TEMPLATE) — PR templates by branch type
 
 **WordPress Block Documentation:**
 - [WordPress Block Editor Handbook](https://developer.wordpress.org/block-editor/)
 - [Block API Reference](https://developer.wordpress.org/block-editor/reference-guides/block-api/)
 - [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
 
-**This Skill:**
+**This Skill (WordPress Block-Specific):**
 - [Branch Validation WordPress Main Skill](../SKILL.md)
 - [WordPress Block Branching Strategy](../docs/BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md)
 - [Block Theme Development Guide](../docs/WORDPRESS_BLOCK_THEME_GUIDE.md)
