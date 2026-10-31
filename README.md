@@ -113,24 +113,49 @@ Skill Response:
 
 ```
 branch-validation-wordpress/
+│
+├── README.md                         # This file (start here!)
 ├── SKILL.md                          # Main skill definition
-├── AGENTS.md                         # Agent definitions & when to use
-├── README.md                         # This file
+├── AGENTS.md                         # Agent definitions
+├── CLAUDE.md                         # Project configuration
+├── CHANGELOG.md                      # Version history
 │
-├── docs/                             # Documentation
-│   ├── BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md    # Block branching guide
-│   ├── WORDPRESS_BLOCK_THEME_GUIDE.md            # Theme development
-│   ├── WORDPRESS_BLOCK_PLUGIN_GUIDE.md           # Plugin development
-│   └── (24+ files from lightspeedwp/.github)
+├── docs/                             # Complete documentation
+│   ├── INDEX.md                      # Documentation index & navigation
+│   ├── ONBOARDING.md                 # 15-minute quickstart for new team members
+│   ├── CONTRIBUTING.md               # How to improve this skill
+│   ├── QUALITY_ASSURANCE.md          # Verification checklist (95/100)
+│   ├── TEAM_READY_SUMMARY.md         # Deployment summary
+│   ├── BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md    # Block branching patterns
+│   ├── WORDPRESS_BLOCK_THEME_GUIDE.md            # Theme development guide
+│   └── WORDPRESS_BLOCK_PLUGIN_GUIDE.md           # Plugin development guide
 │
-├── prompts/                          # LLM prompts
-│   └── validate-wordpress-block-branch.md        # Validation prompt
+├── skills/                           # Sub-skills (specialized contexts)
+│   ├── branch-validation-wordpress-themes.md      # Theme-specific patterns
+│   ├── branch-validation-wordpress-plugins.md     # Plugin-specific patterns
+│   ├── branch-validation-wordpress-architecture.md # Component design
+│   ├── branch-validation-wordpress-security.md    # Security hardening
+│   ├── branch-validation-wordpress-accessibility.md # WCAG 2.2 AAA
+│   ├── branch-validation-wordpress-testing.md     # Testing strategies
+│   └── branch-validation-wordpress-release.md     # Release management
 │
 ├── references/                       # Reference materials
-│   ├── LIGHTSPEED_INTEGRATION.md     # Canonical strategy bridge
-│   └── block-development-instructions.md
+│   ├── LIGHTSPEED_INTEGRATION.md     # Canonical LightSpeed strategy mapping
+│   └── (Additional reference docs from lightspeedwp/.github)
 │
-└── tests/ & __tests__/               # Test suites (from original skill)
+├── prompts/                          # LLM prompts for validation
+│   ├── validate-wordpress-block-branch.md         # Branch validation prompt
+│   └── (Additional prompts)
+│
+├── assets/                           # Templates, checklists, examples
+│   └── README.md                     # Asset documentation
+│
+├── scripts/                          # Validation and automation scripts
+│   ├── validate-branch-name.js       # Branch name validation
+│   └── (Additional scripts)
+│
+└── tests/                            # Test suites
+    └── (BATS integration tests)
 ```
 
 ## Key Concepts
@@ -204,14 +229,34 @@ branch-validation-wordpress/
 
 ## Documentation Map
 
+**Getting Started:**
 | Need | Read | Purpose |
 |------|------|---------|
-| Block naming | [SKILL.md](SKILL.md) | Quick reference |
-| Block workflow | [BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md](docs/BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md) | Step-by-step guide |
-| Theme blocks | [WORDPRESS_BLOCK_THEME_GUIDE.md](docs/WORDPRESS_BLOCK_THEME_GUIDE.md) | Theme development |
-| Plugin blocks | [WORDPRESS_BLOCK_PLUGIN_GUIDE.md](docs/WORDPRESS_BLOCK_PLUGIN_GUIDE.md) | Plugin development |
-| Canonical strategy | [LIGHTSPEED_INTEGRATION.md](references/LIGHTSPEED_INTEGRATION.md) | Org-wide rules |
-| Agents | [AGENTS.md](AGENTS.md) | When to use agent |
+| 15-minute quickstart | [docs/ONBOARDING.md](docs/ONBOARDING.md) | Team member intro |
+| Block naming patterns | [SKILL.md](SKILL.md) | Quick reference |
+| Complete branching guide | [docs/INDEX.md](docs/INDEX.md) | Full documentation index |
+
+**Specialized Guides:**
+| Need | Read | Purpose |
+|------|------|---------|
+| Block development workflow | [docs/BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md](docs/BRANCHING_STRATEGY_WORDPRESS_BLOCKS.md) | Step-by-step guide |
+| Theme block development | [docs/WORDPRESS_BLOCK_THEME_GUIDE.md](docs/WORDPRESS_BLOCK_THEME_GUIDE.md) | Theme-specific patterns |
+| Plugin block development | [docs/WORDPRESS_BLOCK_PLUGIN_GUIDE.md](docs/WORDPRESS_BLOCK_PLUGIN_GUIDE.md) | Plugin-specific patterns |
+| Architecture & component design | [skills/branch-validation-wordpress-architecture.md](skills/branch-validation-wordpress-architecture.md) | Component patterns, hooks |
+| Security hardening | [skills/branch-validation-wordpress-security.md](skills/branch-validation-wordpress-security.md) | XSS, validation, audit |
+| Accessibility (WCAG AAA) | [skills/branch-validation-wordpress-accessibility.md](skills/branch-validation-wordpress-accessibility.md) | Keyboard nav, screen readers |
+| Testing strategies | [skills/branch-validation-wordpress-testing.md](skills/branch-validation-wordpress-testing.md) | Jest, Playwright, a11y |
+| Release management | [skills/branch-validation-wordpress-release.md](skills/branch-validation-wordpress-release.md) | Versioning, deployment |
+
+**Reference & Integration:**
+| Need | Read | Purpose |
+|------|------|---------|
+| Canonical strategy mapping | [references/LIGHTSPEED_INTEGRATION.md](references/LIGHTSPEED_INTEGRATION.md) | Org-wide integration |
+| Contributing guidelines | [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) | Improve the skill |
+| Quality assurance | [docs/QUALITY_ASSURANCE.md](docs/QUALITY_ASSURANCE.md) | Verification checklist |
+| Team readiness | [docs/TEAM_READY_SUMMARY.md](docs/TEAM_READY_SUMMARY.md) | Deployment summary |
+| Agent reference | [AGENTS.md](AGENTS.md) | When to use agent |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) | Recent updates |
 
 ## Integration with LightSpeed WP
 
