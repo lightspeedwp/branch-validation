@@ -1,6 +1,6 @@
 ---
 name: branch-validation-wordpress
-description: Branch naming, testing strategy, and release guidance for WordPress block development. Use this to validate branch names for block themes or plugins, determine which branch type to use (feat, fix, perf, a11y, test, release, hotfix), understand testing requirements by block type, plan releases, coordinate multi-block updates, or onboard teams to the branching strategy. Make sure to use this skill whenever a developer asks about WordPress block branching, names a new branch for a block, needs release coordination guidance, or wants to understand block testing/versioning patterns.
+description: Guides WordPress Gutenberg block development workflows: branch naming conventions, block testing strategies (unit, E2E, a11y), and release coordination. Use for block-specific branching decisions, test strategy, release management, or team onboarding to block development practices.
 compatibility: git, Node.js (for validation scripts), WordPress 5.0+
 ---
 
