@@ -1,0 +1,3 @@
+# Team Onboarding: New Developer
+
+New developer joined our team. Can you explain our WordPress block development workflow, branch naming conventions, how we handle versioning, and what the testing requirements are?

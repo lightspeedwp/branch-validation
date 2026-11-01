@@ -1,0 +1,6 @@
+{
+  "eval_name": "performance-gallery-lazy-loading",
+  "prompt": "
+Gallery block slows down with 50+ images. Implementing lazy loading and intersection observer. Branch name? Performance benchmarks? Testing approach?",
+  "assertions": []
+}

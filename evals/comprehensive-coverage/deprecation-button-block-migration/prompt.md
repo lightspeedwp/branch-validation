@@ -1,0 +1,3 @@
+# Block Deprecation: Button Block Migration
+
+We're deprecating the old button block (v1.x) in favor of new button block (v2.x). How do we handle this with versioning? Backwards compatibility? Migration guide for users?
