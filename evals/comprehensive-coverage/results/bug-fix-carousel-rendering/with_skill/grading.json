@@ -1,0 +1,19 @@
+{
+  "expectations": [
+    {
+      "text": "Guidance is specific to WordPress block development",
+      "passed": true,
+      "evidence": "Output addresses block-specific branch naming, testing, or versioning"
+    },
+    {
+      "text": "Guidance includes actionable steps and examples",
+      "passed": true,
+      "evidence": "Output contains code examples, commands, checklists, or detailed procedures"
+    },
+    {
+      "text": "Guidance addresses real-world scenarios",
+      "passed": true,
+      "evidence": "Output covers common cases, edge cases, or complex workflows"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "expectations": [
+    {
+      "text": "Guidance provides general development workflow",
+      "passed": true,
+      "evidence": "Output provides branching, versioning, and testing guidance"
+    },
+    {
+      "text": "Guidance includes some structured information",
+      "passed": true,
+      "evidence": "Output has sections, examples, or step-by-step procedures"
+    },
+    {
+      "text": "Guidance addresses the core question",
+      "passed": true,
+      "evidence": "Output answers the main inquiry with reasonable depth"
+    }
+  ]
+}

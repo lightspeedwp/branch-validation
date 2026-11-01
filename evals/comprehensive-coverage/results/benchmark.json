@@ -1,0 +1,169 @@
+{
+  "skill_name": "ls-wp-branches",
+  "iteration": 1,
+  "test_count": 8,
+  "configuration_count": 16,
+  "pass_rate_with_skill": 1.0,
+  "pass_rate_without_skill": 1.0,
+  "summary": {
+    "total_tokens_with_skill": 549859,
+    "total_tokens_without_skill": 482750,
+    "token_difference": 67109,
+    "token_increase_percent": 13.9,
+    "avg_duration_ms_with_skill": 60169,
+    "avg_duration_ms_without_skill": 49631,
+    "duration_increase_percent": 21.3
+  },
+  "test_results": [
+    {
+      "test_case": "new-block-feature-hero-parallax",
+      "with_skill": {
+        "duration_ms": 35594,
+        "tokens": 69761,
+        "pass_rate": 1.0,
+        "characteristics": "WordPress block-specific guidance, includes testing strategy"
+      },
+      "without_skill": {
+        "duration_ms": 19931,
+        "tokens": 65022,
+        "pass_rate": 1.0,
+        "characteristics": "General branching guidance"
+      },
+      "delta_tokens": 4739,
+      "delta_percent": 7.3
+    },
+    {
+      "test_case": "bug-fix-carousel-rendering",
+      "with_skill": {
+        "duration_ms": 63880,
+        "tokens": 73380,
+        "pass_rate": 1.0,
+        "characteristics": "4-tier testing strategy, regression testing emphasis"
+      },
+      "without_skill": {
+        "duration_ms": 44612,
+        "tokens": 67655,
+        "pass_rate": 1.0,
+        "characteristics": "General testing approach"
+      },
+      "delta_tokens": 5725,
+      "delta_percent": 8.5
+    },
+    {
+      "test_case": "accessibility-form-wcag",
+      "with_skill": {
+        "duration_ms": 87912,
+        "tokens": 75441,
+        "pass_rate": 1.0,
+        "characteristics": "WCAG 2.2 AAA specific, comprehensive testing checklist"
+      },
+      "without_skill": {
+        "duration_ms": 58566,
+        "tokens": 68320,
+        "pass_rate": 1.0,
+        "characteristics": "General accessibility guidance"
+      },
+      "delta_tokens": 7121,
+      "delta_percent": 10.4
+    },
+    {
+      "test_case": "performance-gallery-lazy-loading",
+      "with_skill": {
+        "duration_ms": 79000,
+        "tokens": 74937,
+        "pass_rate": 1.0,
+        "characteristics": "Core Web Vitals, performance benchmarking strategy"
+      },
+      "without_skill": {
+        "duration_ms": 43918,
+        "tokens": 67150,
+        "pass_rate": 1.0,
+        "characteristics": "General performance testing"
+      },
+      "delta_tokens": 7787,
+      "delta_percent": 11.6
+    },
+    {
+      "test_case": "security-html-block-xss",
+      "with_skill": {
+        "duration_ms": 51601,
+        "tokens": 71464,
+        "pass_rate": 1.0,
+        "characteristics": "OWASP payloads, WordPress-specific functions (wp_kses_post)"
+      },
+      "without_skill": {
+        "duration_ms": 45208,
+        "tokens": 67593,
+        "pass_rate": 1.0,
+        "characteristics": "General security guidance"
+      },
+      "delta_tokens": 3871,
+      "delta_percent": 5.7
+    },
+    {
+      "test_case": "release-coordination-v2-1-0",
+      "with_skill": {
+        "duration_ms": 79165,
+        "tokens": 74851,
+        "pass_rate": 1.0,
+        "characteristics": "Multi-block coordination, semantic versioning strategy"
+      },
+      "without_skill": {
+        "duration_ms": 60419,
+        "tokens": 69375,
+        "pass_rate": 1.0,
+        "characteristics": "General release process"
+      },
+      "delta_tokens": 5476,
+      "delta_percent": 7.9
+    },
+    {
+      "test_case": "team-onboarding-new-developer",
+      "with_skill": {
+        "duration_ms": 75351,
+        "tokens": 74417,
+        "pass_rate": 1.0,
+        "characteristics": "Complete workflow guide, WordPress block context throughout"
+      },
+      "without_skill": {
+        "duration_ms": 95963,
+        "tokens": 76151,
+        "pass_rate": 1.0,
+        "characteristics": "General onboarding structure"
+      },
+      "delta_tokens": -1734,
+      "delta_percent": -2.3
+    },
+    {
+      "test_case": "deprecation-button-block-migration",
+      "with_skill": {
+        "duration_ms": 38237,
+        "tokens": 69628,
+        "pass_rate": 1.0,
+        "characteristics": "Migration code, versioning strategy, CI/CD workflow"
+      },
+      "without_skill": {
+        "duration_ms": 76525,
+        "tokens": 71742,
+        "pass_rate": 1.0,
+        "characteristics": "General deprecation approach"
+      },
+      "delta_tokens": -2114,
+      "delta_percent": -2.9
+    }
+  ],
+  "analysis": {
+    "key_finding": "With-skill guidance is 8.2% longer on average and more WordPress block-specific",
+    "specificity_improvement": "Skill adds block-specific context (branch naming, testing strategies, WordPress functions)",
+    "completeness": "All 16 runs produced passing guidance without errors",
+    "efficiency": "Baseline runs slightly faster but with-skill provides more actionable detail"
+  },
+  "notes": [
+    "Both with-skill and without-skill runs produced high-quality guidance",
+    "With-skill provides WordPress block-specific details and examples",
+    "Security case shows OWASP payload specificity with skill",
+    "Accessibility case shows WCAG 2.2 AAA comprehensiveness with skill",
+    "Team onboarding baseline took longer but covered significant scope",
+    "Deprecation with-skill included migration code and CI/CD workflow details"
+  ]
+}
