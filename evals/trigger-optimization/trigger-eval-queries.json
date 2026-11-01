@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I'm building a new hero block with a parallax background effect for our WordPress theme. What should I name the branch and what testing do I need to do before pushing to production?",
+    "should_trigger": true
+  },
+  {
+    "query": "We're updating the carousel block in our plugin and it's a breaking change - we need to bump from v1.2.0 to v2.0.0. How do I handle the release branch and migration guide?",
+    "should_trigger": true
+  },
+  {
+    "query": "Found a11y issues in our form block - keyboard navigation isn't working and screen readers aren't picking up field labels. What branch type should I use and what's the testing checklist?",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm about to push a feature branch for a new accordion block component. The branch name is feat/block-accordion-expand-animations. Can you validate this follows the right pattern?",
+    "should_trigger": true
+  },
+  {
+    "query": "We have 3 blocks in development (testimonial slider, pricing table, image gallery) and they're all releasing together in v2.1.0. How do I coordinate the multi-block release and update CHANGELOG?",
+    "should_trigger": true
+  },
+  {
+    "query": "Setting up CI/CD for our WordPress block plugin. We need branch validation, testing strategy per block type, and automated labeling. Where do I start?",
+    "should_trigger": true
+  },
+  {
+    "query": "New team member joined and needs to understand our WordPress block development workflow, branch naming conventions, and how we handle block versioning. Can you walk them through it?",
+    "should_trigger": true
+  },
+  {
+    "query": "The gallery block is rendering slowly on large image sets. I want to implement lazy loading. Should this be perf/block-gallery-lazy-load or something else? And what performance tests do I need?",
+    "should_trigger": true
+  },
+  {
+    "query": "Found an XSS vulnerability in our custom HTML block - need to sanitize user input on the server side. What branch type is this and what's the security testing checklist?",
+    "should_trigger": true
+  },
+  {
+    "query": "Creating a new pattern library for landing page layouts using our existing blocks. Should the branch be feat/block-patterns-landing or something different? And how do I version patterns?",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to fix a bug in my React app's state management. Should I branch from main or develop?",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I do a git rebase and squash my commits before pushing?",
+    "should_trigger": false
+  },
+  {
+    "query": "I'm updating our PHP package version in composer.json. What's the semantic versioning strategy?",
+    "should_trigger": false
+  },
+  {
+    "query": "We're deploying a Node.js microservice and need to set up automated releases via GitHub Actions. Branch strategy recommendations?",
+    "should_trigger": false
+  },
+  {
+    "query": "I have a general WordPress site that's not a theme or plugin - I'm just installing blocks from WordPress.org. What branching should I use?",
+    "should_trigger": false
+  },
+  {
+    "query": "Our dev team uses Gitflow. Can I adapt this for our WordPress development?",
+    "should_trigger": false
+  },
+  {
+    "query": "Need to write comprehensive unit tests for a Node.js library. What test coverage threshold should I aim for?",
+    "should_trigger": false
+  },
+  {
+    "query": "Our site has performance issues - Core Web Vitals are slow. Can you help optimize?",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to validate that my block follows WordPress coding standards. What should I check?",
+    "should_trigger": true
+  },
+  {
+    "query": "We're planning to deprecate an old block version and replace it with a new one. How do I handle this with versioning and backwards compatibility?",
+    "should_trigger": true
+  }
+]
